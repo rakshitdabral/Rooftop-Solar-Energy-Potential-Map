@@ -106,6 +106,7 @@ This method ensures accurate area calculations by integrating geographic and pix
     - `area_finder.ipynb`
 
 4. **Make Changes to Data2 folder as shown**:
+   
     ![App Screenshot](https://iili.io/dR0aoCB.png)
     
 
