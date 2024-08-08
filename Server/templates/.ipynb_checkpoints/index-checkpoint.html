@@ -1,0 +1,419 @@
+ <!-- <!DOCTYPE html>
+<html>
+<head>
+  <title>Solar Potential Calculator</title>
+  <style>
+    #map {
+      height: 70%;
+      width: 100%;
+    }
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    #controls {
+      height: 20%;
+      padding: 10px;
+    }
+    #mapImage {
+      height: 10%;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+  <div id="controls">
+    <label for="coords">Enter coordinates (lat,lng; lat,lng; ...):</label>
+    <input type="text" id="coords" size="60" placeholder="e.g., 28.6315,77.2167; 28.6315,77.2171; 28.6319,77.2171; 28.6319,77.2167">
+    <button id="searchButton">Search</button>
+    <button id="createPolygon">Create Polygon</button>
+    <button id="removePolygon">Remove Polygon</button>
+    <button id="saveImageButton">Save Satellite Image</button>
+  </div>
+  <div id="mapImage"></div>
+
+  <script>
+    let map;
+    let customPolygon;
+
+    function initMap() {
+      map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 18,
+        center: { lat: 28.6317, lng: 77.2169 },
+        mapTypeId: "terrain",
+      });
+
+      document.getElementById("createPolygon").addEventListener("click", createPolygon);
+      document.getElementById("removePolygon").addEventListener("click", removePolygon);
+      document.getElementById("searchButton").addEventListener("click", searchCoordinates);
+      document.getElementById("saveImageButton").addEventListener("click", saveImage);
+    }
+
+    function createPolygon() {
+      const coords = document.getElementById("coords").value;
+      const coordsArray = coords.split(";").map(coord => {
+        const [lat, lng] = coord.split(",").map(Number);
+        return { lat, lng };
+      });
+
+      if (!validateCoordinates(coordsArray)) {
+        alert("The difference between consecutive latitude or longitude values should not be greater than 0.01.");
+        return;
+      }
+
+      if (customPolygon) {
+        customPolygon.setMap(null);
+      }
+
+      customPolygon = new google.maps.Polygon({
+        paths: coordsArray,
+        strokeColor: "#FF0000",
+        strokeOpacity: 0.8,
+        strokeWeight: 2,
+        fillColor: "#FF0000",
+        fillOpacity: 0.35,
+      });
+
+      customPolygon.setMap(map);
+      fitMapToPolygon(customPolygon);
+    }
+
+    function removePolygon() {
+      if (customPolygon) {
+        customPolygon.setMap(null);
+        customPolygon = null;
+      }
+    }
+
+    function searchCoordinates() {
+      const coords = document.getElementById("coords").value;
+      const coordsArray = coords.split(";").map(coord => {
+        const [lat, lng] = coord.split(",").map(Number);
+        return { lat, lng };
+      });
+
+      if (coordsArray.length > 0) {
+        const bounds = new google.maps.LatLngBounds();
+        coordsArray.forEach(coord => bounds.extend(new google.maps.LatLng(coord.lat, coord.lng)));
+        map.fitBounds(bounds);
+      }
+    }
+
+    function validateCoordinates(coordsArray) {
+      for (let i = 0; i < coordsArray.length - 1; i++) {
+        const latDiff = Math.abs(coordsArray[i].lat - coordsArray[i + 1].lat);
+        const lngDiff = Math.abs(coordsArray[i].lng - coordsArray[i + 1].lng);
+        if (latDiff > 0.01 || lngDiff > 0.01) {
+          return false;
+        }
+      }
+      return true;
+    }
+
+    function fitMapToPolygon(polygon) {
+      const bounds = new google.maps.LatLngBounds();
+      polygon.getPath().forEach(function (path) {
+        bounds.extend(path);
+      });
+      map.fitBounds(bounds);
+    }
+
+    async function saveImage() {
+      if (!customPolygon) {
+        alert("Please create a polygon first.");
+        return;
+      }
+
+      const bounds = map.getBounds();
+      const center = bounds.getCenter();
+      const zoom = map.getZoom();
+      const coordsArray = customPolygon.getPath().getArray().map(coord => ({ lat: coord.lat(), lng: coord.lng() }));
+      const staticMapUrl = `https://maps.googleapis.com/maps/api/staticmap?center=${center.lat()},${center.lng()}&zoom=${zoom}&size=600x400&maptype=satellite&path=color:0xff0000ff|weight:2${coordsArray.map(coord => `|${coord.lat},${coord.lng}`).join('')}&key=AIzaSyB4mze3dCYLlVzGEWO-cyHZYEiV01JD6iM`;
+
+      try {
+        // Calculate solar data
+        const solarDataResponse = await fetch('/api/calculate_solar_data', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            latitude: center.lat(),
+            longitude: center.lng(),
+            startDate: '20230101',
+            endDate: '20231231',
+            area: 500,
+            efficiency: 0.18
+          })
+        });
+        const solarData = await solarDataResponse.json();
+        console.log('Solar data:', solarData);
+
+        if (solarData.error) {
+          throw new Error(solarData.error);
+        }
+
+        // Save image and data
+        console.log('Saving image and data...');
+        const saveImageResponse = await fetch('/api/save_image', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            latitude: center.lat(),
+            longitude: center.lng(),
+            coordsArray: coordsArray,
+            staticMapUrl: staticMapUrl,
+            avgRadiance: solarData.avgRadiance,
+            solarPotential: solarData.solarPotential,
+            efficiency: 0.18
+          })
+        });
+        const saveImageData = await saveImageResponse.json();
+        console.log('Save image response:', saveImageData);
+
+        if (saveImageData.error) {
+          throw new Error(saveImageData.error);
+        }
+
+        // Display saved image and results
+        const imgElement = document.createElement("img");
+        imgElement.src = saveImageData.imagePath;
+        imgElement.alt = "Satellite Image";
+        document.getElementById("mapImage").innerHTML = "";
+        document.getElementById("mapImage").appendChild(imgElement);
+
+        alert(`Polygon area: ${saveImageData.area.toFixed(2)} square meters
+Average Radiance: ${saveImageData.avgRadiance.toFixed(2)} kWh/m²/day
+Solar Potential: ${saveImageData.solarPotential.toFixed(2)} kWh/year`);
+
+      } catch (error) {
+        console.error('Error:', error);
+        alert(`An error occurred: ${error.message}`);
+      }
+    }
+
+    window.initMap = initMap;
+  </script>
+  <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4mze3dCYLlVzGEWO-cyHZYEiV01JD6iM&callback=initMap&v=weekly"
+    async
+    defer
+  ></script>
+</body>
+</html> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solar YAtra</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <header>
+    <h1>Solar Estimate</h1>
+  </header>
+  <main>
+    <div id="map"></div>
+    <div id="controls">
+      <div class="input-group">
+        <label for="coords">Enter coordinates (lat,lng; lat,lng; ...):</label>
+        <input type="text" id="coords" placeholder="e.g., 28.6315,77.2167; 28.6315,77.2171; 28.6319,77.2171; 28.6319,77.2167">
+      </div>
+      <div class="button-group">
+        <button id="searchButton" class="btn btn-primary">Search</button>
+        <button id="createPolygon" class="btn btn-success">Create Polygon</button>
+        <button id="removePolygon" class="btn btn-danger">Remove Polygon</button>
+        <button id="saveImageButton" class="btn btn-info">Save Satellite Image</button>
+      </div>
+    </div>
+    <div id="mapImage"></div>
+  </main>
+
+  <script>
+    // Your existing JavaScript code here
+    let map;
+    let customPolygon;
+
+    function initMap() {
+      map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 18,
+        center: { lat: 28.6317, lng: 77.2169 },
+        mapTypeId: "terrain",
+      });
+
+      document.getElementById("createPolygon").addEventListener("click", createPolygon);
+      document.getElementById("removePolygon").addEventListener("click", removePolygon);
+      document.getElementById("searchButton").addEventListener("click", searchCoordinates);
+      document.getElementById("saveImageButton").addEventListener("click", saveImage);
+    }
+
+    function createPolygon() {
+      const coords = document.getElementById("coords").value;
+      const coordsArray = coords.split(";").map(coord => {
+        const [lat, lng] = coord.split(",").map(Number);
+        return { lat, lng };
+      });
+
+      if (!validateCoordinates(coordsArray)) {
+        alert("The difference between consecutive latitude or longitude values should not be greater than 0.01.");
+        return;
+      }
+
+      if (customPolygon) {
+        customPolygon.setMap(null);
+      }
+
+      customPolygon = new google.maps.Polygon({
+        paths: coordsArray,
+        strokeColor: "#FF0000",
+        strokeOpacity: 0.8,
+        strokeWeight: 2,
+        fillColor: "#FF0000",
+        fillOpacity: 0.35,
+      });
+
+      customPolygon.setMap(map);
+      fitMapToPolygon(customPolygon);
+    }
+
+    function removePolygon() {
+      if (customPolygon) {
+        customPolygon.setMap(null);
+        customPolygon = null;
+      }
+    }
+
+    function searchCoordinates() {
+      const coords = document.getElementById("coords").value;
+      const coordsArray = coords.split(";").map(coord => {
+        const [lat, lng] = coord.split(",").map(Number);
+        return { lat, lng };
+      });
+
+      if (coordsArray.length > 0) {
+        const bounds = new google.maps.LatLngBounds();
+        coordsArray.forEach(coord => bounds.extend(new google.maps.LatLng(coord.lat, coord.lng)));
+        map.fitBounds(bounds);
+      }
+    }
+
+    function validateCoordinates(coordsArray) {
+      for (let i = 0; i < coordsArray.length - 1; i++) {
+        const latDiff = Math.abs(coordsArray[i].lat - coordsArray[i + 1].lat);
+        const lngDiff = Math.abs(coordsArray[i].lng - coordsArray[i + 1].lng);
+        if (latDiff > 0.01 || lngDiff > 0.01) {
+          return false;
+        }
+      }
+      return true;
+    }
+
+    function fitMapToPolygon(polygon) {
+      const bounds = new google.maps.LatLngBounds();
+      polygon.getPath().forEach(function (path) {
+        bounds.extend(path);
+      });
+      map.fitBounds(bounds);
+    }
+
+    async function saveImage() {
+  if (!customPolygon) {
+    alert("Please create a polygon first.");
+    return;
+  }
+
+  const bounds = map.getBounds();
+  const center = bounds.getCenter();
+  const zoom = map.getZoom();
+  const coordsArray = customPolygon.getPath().getArray().map(coord => ({ lat: coord.lat(), lng: coord.lng() }));
+  const staticMapUrl = `https://maps.googleapis.com/maps/api/staticmap?center=${center.lat()},${center.lng()}&zoom=${zoom}&size=600x400&maptype=satellite&path=color:0xff0000ff|weight:2${coordsArray.map(coord => `|${coord.lat},${coord.lng}`).join('')}&key=AIzaSyB4mze3dCYLlVzGEWO-cyHZYEiV01JD6iM`;
+
+  try {
+    // Calculate solar data
+    const solarDataResponse = await fetch('/api/calculate_solar_data', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        latitude: center.lat(),
+        longitude: center.lng(),
+        coordsArray: coordsArray,
+        startDate: '20230101',
+        endDate: '20231231',
+        efficiency: 0.18
+      })
+    });
+    const solarData = await solarDataResponse.json();
+    console.log('Solar data:', solarData);
+
+    if (solarData.error) {
+      throw new Error(solarData.error);
+    }
+
+    // Save image and data
+    console.log('Saving image and data...');
+    const saveImageResponse = await fetch('/api/save_image', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        latitude: center.lat(),
+        longitude: center.lng(),
+        coordsArray: coordsArray,
+        staticMapUrl: staticMapUrl,
+        avgRadiance: solarData.avgRadiance,
+        solarPotentialAPI: solarData.solarPotentialAPI,
+        solarPotentialModel: solarData.solarPotentialModel,
+        efficiency: 0.18
+      })
+    });
+    const saveImageData = await saveImageResponse.json();
+    console.log('Save image response:', saveImageData);
+
+    if (saveImageData.error) {
+      throw new Error(saveImageData.error);
+    }
+
+    // Display saved image and results
+    const imgElement = document.createElement("img");
+    imgElement.src = saveImageData.imagePath;
+    imgElement.alt = "Satellite Image";
+    document.getElementById("mapImage").innerHTML = "";
+    document.getElementById("mapImage").appendChild(imgElement);
+
+    // Display results
+    alert(`Polygon area: ${solarData.area.toFixed(2)} square meters
+Average Radiance (API): ${solarData.avgRadiance.toFixed(2)} kWh/m²/day
+Average Radiance (Model): ${solarData.modelAvgRadiance.toFixed(2)} kWh/m²/day
+Solar Potential (API): ${solarData.solarPotentialAPI.toFixed(2)} kWh/year
+Solar Potential (Model): ${solarData.solarPotentialModel.toFixed(2)} kWh/year`);
+
+  } catch (error) {
+    console.error('Error:', error);
+    alert(`An error occurred: ${error.message}`);
+  }
+}
+
+
+    window.initMap = initMap;
+  </script>
+  <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4mze3dCYLlVzGEWO-cyHZYEiV01JD6iM&callback=initMap&v=weekly"
+    async
+    defer
+  ></script>
+</body>
+</html>

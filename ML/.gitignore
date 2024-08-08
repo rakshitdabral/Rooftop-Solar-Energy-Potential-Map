@@ -1,0 +1,8 @@
+
+.ipynb_checkpoints/area_finder-checkpoint.ipynb
+.ipynb_checkpoints/automatic_tif_converter-checkpoint.ipynb
+/.ipynb_checkpoints
+/data2
+/dataset
+model_architecture_resnet.json
+*.h5
