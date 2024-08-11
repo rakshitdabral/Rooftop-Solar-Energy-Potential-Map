@@ -1,0 +1,893 @@
+[
+    {
+        "label": "datetime",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "datetime",
+        "description": "datetime",
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "requests",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "requests",
+        "description": "requests",
+        "detail": "requests",
+        "documentation": {}
+    },
+    {
+        "label": "pandas",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pandas",
+        "description": "pandas",
+        "detail": "pandas",
+        "documentation": {}
+    },
+    {
+        "label": "Flask",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "jsonify",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "send_from_directory",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "render_template",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "Flask",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "jsonify",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "render_template",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "send_from_directory",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "SQLAlchemy",
+        "importPath": "flask_sqlalchemy",
+        "description": "flask_sqlalchemy",
+        "isExtraImport": true,
+        "detail": "flask_sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "SQLAlchemy",
+        "importPath": "flask_sqlalchemy",
+        "description": "flask_sqlalchemy",
+        "isExtraImport": true,
+        "detail": "flask_sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "Polygon",
+        "importPath": "shapely.geometry",
+        "description": "shapely.geometry",
+        "isExtraImport": true,
+        "detail": "shapely.geometry",
+        "documentation": {}
+    },
+    {
+        "label": "Polygon",
+        "importPath": "shapely.geometry",
+        "description": "shapely.geometry",
+        "isExtraImport": true,
+        "detail": "shapely.geometry",
+        "documentation": {}
+    },
+    {
+        "label": "Polygon",
+        "importPath": "shapely.geometry",
+        "description": "shapely.geometry",
+        "isExtraImport": true,
+        "detail": "shapely.geometry",
+        "documentation": {}
+    },
+    {
+        "label": "orient",
+        "importPath": "shapely.geometry.polygon",
+        "description": "shapely.geometry.polygon",
+        "isExtraImport": true,
+        "detail": "shapely.geometry.polygon",
+        "documentation": {}
+    },
+    {
+        "label": "orient",
+        "importPath": "shapely.geometry.polygon",
+        "description": "shapely.geometry.polygon",
+        "isExtraImport": true,
+        "detail": "shapely.geometry.polygon",
+        "documentation": {}
+    },
+    {
+        "label": "psycopg2",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "psycopg2",
+        "description": "psycopg2",
+        "detail": "psycopg2",
+        "documentation": {}
+    },
+    {
+        "label": "logging",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "logging",
+        "description": "logging",
+        "detail": "logging",
+        "documentation": {}
+    },
+    {
+        "label": "secure_filename",
+        "importPath": "werkzeug.utils",
+        "description": "werkzeug.utils",
+        "isExtraImport": true,
+        "detail": "werkzeug.utils",
+        "documentation": {}
+    },
+    {
+        "label": "secure_filename",
+        "importPath": "werkzeug.utils",
+        "description": "werkzeug.utils",
+        "isExtraImport": true,
+        "detail": "werkzeug.utils",
+        "documentation": {}
+    },
+    {
+        "label": "calculate_solar_potential",
+        "importPath": "model.solar_potential",
+        "description": "model.solar_potential",
+        "isExtraImport": true,
+        "detail": "model.solar_potential",
+        "documentation": {}
+    },
+    {
+        "label": "calculate_solar_potential",
+        "importPath": "model.solar_potential",
+        "description": "model.solar_potential",
+        "isExtraImport": true,
+        "detail": "model.solar_potential",
+        "documentation": {}
+    },
+    {
+        "label": "splitfolders",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "splitfolders",
+        "description": "splitfolders",
+        "detail": "splitfolders",
+        "documentation": {}
+    },
+    {
+        "label": "logging",
+        "importPath": "src.logger",
+        "description": "src.logger",
+        "isExtraImport": true,
+        "detail": "src.logger",
+        "documentation": {}
+    },
+    {
+        "label": "find_packages",
+        "importPath": "setuptools",
+        "description": "setuptools",
+        "isExtraImport": true,
+        "detail": "setuptools",
+        "documentation": {}
+    },
+    {
+        "label": "setup",
+        "importPath": "setuptools",
+        "description": "setuptools",
+        "isExtraImport": true,
+        "detail": "setuptools",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "rasterio",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "rasterio",
+        "description": "rasterio",
+        "detail": "rasterio",
+        "documentation": {}
+    },
+    {
+        "label": "transform",
+        "importPath": "rasterio.warp",
+        "description": "rasterio.warp",
+        "isExtraImport": true,
+        "detail": "rasterio.warp",
+        "documentation": {}
+    },
+    {
+        "label": "numpy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "numpy",
+        "description": "numpy",
+        "detail": "numpy",
+        "documentation": {}
+    },
+    {
+        "label": "cv2",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "cv2",
+        "description": "cv2",
+        "detail": "cv2",
+        "documentation": {}
+    },
+    {
+        "label": "ResNet50",
+        "importPath": "keras.applications",
+        "description": "keras.applications",
+        "isExtraImport": true,
+        "detail": "keras.applications",
+        "documentation": {}
+    },
+    {
+        "label": "Conv2D",
+        "importPath": "keras.layers",
+        "description": "keras.layers",
+        "isExtraImport": true,
+        "detail": "keras.layers",
+        "documentation": {}
+    },
+    {
+        "label": "Input",
+        "importPath": "keras.layers",
+        "description": "keras.layers",
+        "isExtraImport": true,
+        "detail": "keras.layers",
+        "documentation": {}
+    },
+    {
+        "label": "MaxPooling2D",
+        "importPath": "keras.layers",
+        "description": "keras.layers",
+        "isExtraImport": true,
+        "detail": "keras.layers",
+        "documentation": {}
+    },
+    {
+        "label": "UpSampling2D",
+        "importPath": "keras.layers",
+        "description": "keras.layers",
+        "isExtraImport": true,
+        "detail": "keras.layers",
+        "documentation": {}
+    },
+    {
+        "label": "concatenate",
+        "importPath": "keras.layers",
+        "description": "keras.layers",
+        "isExtraImport": true,
+        "detail": "keras.layers",
+        "documentation": {}
+    },
+    {
+        "label": "Model",
+        "importPath": "keras.models",
+        "description": "keras.models",
+        "isExtraImport": true,
+        "detail": "keras.models",
+        "documentation": {}
+    },
+    {
+        "label": "Image",
+        "importPath": "PIL",
+        "description": "PIL",
+        "isExtraImport": true,
+        "detail": "PIL",
+        "documentation": {}
+    },
+    {
+        "label": "keras",
+        "importPath": "tensorflow",
+        "description": "tensorflow",
+        "isExtraImport": true,
+        "detail": "tensorflow",
+        "documentation": {}
+    },
+    {
+        "label": "SolarPotentialResult",
+        "kind": 6,
+        "importPath": ".ipynb_checkpoints.app-checkpoint",
+        "description": ".ipynb_checkpoints.app-checkpoint",
+        "peekOfCode": "class SolarPotentialResult(db.Model):\n    id = db.Column(db.Integer, primary_key=True)\n    latitude = db.Column(db.Float, nullable=False)\n    longitude = db.Column(db.Float, nullable=False)\n    image_path = db.Column(db.String(255), nullable=False)\n    area = db.Column(db.Float, nullable=False)\n    efficiency = db.Column(db.Float, nullable=False)\n    avg_radiance = db.Column(db.Float, nullable=False)\n    avg_radiance_model = db.Column(db.Float, nullable=False)\n    solar_potential_api = db.Column(db.Float, nullable=False)",
+        "detail": ".ipynb_checkpoints.app-checkpoint",
+        "documentation": {}
+    },
+    {
+        "label": "allowed_file",
+        "kind": 2,
+        "importPath": ".ipynb_checkpoints.app-checkpoint",
+        "description": ".ipynb_checkpoints.app-checkpoint",
+        "peekOfCode": "def allowed_file(filename):\n    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS\ndef fetch_solar_radiance(latitude, longitude, start_date, end_date):\n    url = \"https://power.larc.nasa.gov/api/temporal/daily/point\"\n    params = {\n        'parameters': 'ALLSKY_SFC_SW_DWN',\n        'community': 'RE',\n        'longitude': longitude,\n        'latitude': latitude,\n        'start': start_date,",
+        "detail": ".ipynb_checkpoints.app-checkpoint",
+        "documentation": {}
+    },
+    {
+        "label": "fetch_solar_radiance",
+        "kind": 2,
+        "importPath": ".ipynb_checkpoints.app-checkpoint",
+        "description": ".ipynb_checkpoints.app-checkpoint",
+        "peekOfCode": "def fetch_solar_radiance(latitude, longitude, start_date, end_date):\n    url = \"https://power.larc.nasa.gov/api/temporal/daily/point\"\n    params = {\n        'parameters': 'ALLSKY_SFC_SW_DWN',\n        'community': 'RE',\n        'longitude': longitude,\n        'latitude': latitude,\n        'start': start_date,\n        'end': end_date,\n        'format': 'json'",
+        "detail": ".ipynb_checkpoints.app-checkpoint",
+        "documentation": {}
+    },
+    {
+        "label": "calculate_monthly_average_radiance",
+        "kind": 2,
+        "importPath": ".ipynb_checkpoints.app-checkpoint",
+        "description": ".ipynb_checkpoints.app-checkpoint",
+        "peekOfCode": "def calculate_monthly_average_radiance(data):\n    try:\n        dates = []\n        radiance_values = []\n        for date, value in data['properties']['parameter']['ALLSKY_SFC_SW_DWN'].items():\n            dates.append(datetime.datetime.strptime(date, '%Y%m%d'))\n            radiance_values.append(value)\n        df = pd.DataFrame({'date': dates, 'radiance': radiance_values})\n        df.set_index('date', inplace=True)\n        monthly_avg_radiance = df.resample('ME').mean()",
+        "detail": ".ipynb_checkpoints.app-checkpoint",
+        "documentation": {}
+    },
+    {
+        "label": "calculate_solar_energy_potential",
+        "kind": 2,
+        "importPath": ".ipynb_checkpoints.app-checkpoint",
+        "description": ".ipynb_checkpoints.app-checkpoint",
+        "peekOfCode": "def calculate_solar_energy_potential(monthly_avg_radiance, area, efficiency):\n    monthly_avg_radiance['total_energy'] = monthly_avg_radiance['radiance'] * area * efficiency * 365 / 12  # Energy in kWh/year\n    return monthly_avg_radiance\n@app.route('/')\ndef index():\n    return render_template('index.html')\n@app.route('/api/calculate_solar_data', methods=['POST'])\ndef calculate_solar_data():\n    data = request.json\n    latitude = data.get('latitude')",
+        "detail": ".ipynb_checkpoints.app-checkpoint",
+        "documentation": {}
+    },
+    {
+        "label": "index",
+        "kind": 2,
+        "importPath": ".ipynb_checkpoints.app-checkpoint",
+        "description": ".ipynb_checkpoints.app-checkpoint",
+        "peekOfCode": "def index():\n    return render_template('index.html')\n@app.route('/api/calculate_solar_data', methods=['POST'])\ndef calculate_solar_data():\n    data = request.json\n    latitude = data.get('latitude')\n    longitude = data.get('longitude')\n    coords = data.get('coordsArray')\n    start_date = data.get('startDate', '20230101')\n    end_date = data.get('endDate', '20231231')",
+        "detail": ".ipynb_checkpoints.app-checkpoint",
+        "documentation": {}
+    },
+    {
+        "label": "calculate_solar_data",
+        "kind": 2,
+        "importPath": ".ipynb_checkpoints.app-checkpoint",
+        "description": ".ipynb_checkpoints.app-checkpoint",
+        "peekOfCode": "def calculate_solar_data():\n    data = request.json\n    latitude = data.get('latitude')\n    longitude = data.get('longitude')\n    coords = data.get('coordsArray')\n    start_date = data.get('startDate', '20230101')\n    end_date = data.get('endDate', '20231231')\n    efficiency = data.get('efficiency', 0.18)\n    if None in [latitude, longitude, coords]:\n        return jsonify({'error': 'Missing required fields'}), 400",
+        "detail": ".ipynb_checkpoints.app-checkpoint",
+        "documentation": {}
+    },
+    {
+        "label": "save_image",
+        "kind": 2,
+        "importPath": ".ipynb_checkpoints.app-checkpoint",
+        "description": ".ipynb_checkpoints.app-checkpoint",
+        "peekOfCode": "def save_image():\n    data = request.json\n    logger.info(f\"Received data: {data}\")\n    latitude = data.get('latitude')\n    longitude = data.get('longitude')\n    coords = data.get('coordsArray')\n    static_map_url = data.get('staticMapUrl')\n    avg_radiance = data.get('avgRadiance', 0)\n    model_avg_radiance = data.get('modelAvgRadiance', 0)\n    solar_potential_api = data.get('solarPotentialAPI', 0)",
+        "detail": ".ipynb_checkpoints.app-checkpoint",
+        "documentation": {}
+    },
+    {
+        "label": "serve_image",
+        "kind": 2,
+        "importPath": ".ipynb_checkpoints.app-checkpoint",
+        "description": ".ipynb_checkpoints.app-checkpoint",
+        "peekOfCode": "def serve_image(filename):\n    return send_from_directory('static/images', filename)\n@app.route('/api/results', methods=['GET'])\ndef get_results():\n    results = SolarPotentialResult.query.all()\n    return jsonify([{\n        'id': result.id,\n        'latitude': result.latitude,\n        'longitude': result.longitude,\n        'imagePath': result.image_path,",
+        "detail": ".ipynb_checkpoints.app-checkpoint",
+        "documentation": {}
+    },
+    {
+        "label": "get_results",
+        "kind": 2,
+        "importPath": ".ipynb_checkpoints.app-checkpoint",
+        "description": ".ipynb_checkpoints.app-checkpoint",
+        "peekOfCode": "def get_results():\n    results = SolarPotentialResult.query.all()\n    return jsonify([{\n        'id': result.id,\n        'latitude': result.latitude,\n        'longitude': result.longitude,\n        'imagePath': result.image_path,\n        'area': result.area,\n        'efficiency': result.efficiency,\n        'avgRadiance': result.avg_radiance,",
+        "detail": ".ipynb_checkpoints.app-checkpoint",
+        "documentation": {}
+    },
+    {
+        "label": "logger",
+        "kind": 5,
+        "importPath": ".ipynb_checkpoints.app-checkpoint",
+        "description": ".ipynb_checkpoints.app-checkpoint",
+        "peekOfCode": "logger = logging.getLogger(__name__)\napp = Flask(__name__)\n# Database configuration\napp.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://aman:aman7303@localhost/solar_db'\napp.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False\ndb = SQLAlchemy(app)\nUPLOAD_FOLDER = 'static/images'\nALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'tif', 'tiff'}\napp.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER\n# Database model",
+        "detail": ".ipynb_checkpoints.app-checkpoint",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": ".ipynb_checkpoints.app-checkpoint",
+        "description": ".ipynb_checkpoints.app-checkpoint",
+        "peekOfCode": "app = Flask(__name__)\n# Database configuration\napp.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://aman:aman7303@localhost/solar_db'\napp.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False\ndb = SQLAlchemy(app)\nUPLOAD_FOLDER = 'static/images'\nALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'tif', 'tiff'}\napp.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER\n# Database model\nclass SolarPotentialResult(db.Model):",
+        "detail": ".ipynb_checkpoints.app-checkpoint",
+        "documentation": {}
+    },
+    {
+        "label": "app.config['SQLALCHEMY_DATABASE_URI']",
+        "kind": 5,
+        "importPath": ".ipynb_checkpoints.app-checkpoint",
+        "description": ".ipynb_checkpoints.app-checkpoint",
+        "peekOfCode": "app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://aman:aman7303@localhost/solar_db'\napp.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False\ndb = SQLAlchemy(app)\nUPLOAD_FOLDER = 'static/images'\nALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'tif', 'tiff'}\napp.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER\n# Database model\nclass SolarPotentialResult(db.Model):\n    id = db.Column(db.Integer, primary_key=True)\n    latitude = db.Column(db.Float, nullable=False)",
+        "detail": ".ipynb_checkpoints.app-checkpoint",
+        "documentation": {}
+    },
+    {
+        "label": "app.config['SQLALCHEMY_TRACK_MODIFICATIONS']",
+        "kind": 5,
+        "importPath": ".ipynb_checkpoints.app-checkpoint",
+        "description": ".ipynb_checkpoints.app-checkpoint",
+        "peekOfCode": "app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False\ndb = SQLAlchemy(app)\nUPLOAD_FOLDER = 'static/images'\nALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'tif', 'tiff'}\napp.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER\n# Database model\nclass SolarPotentialResult(db.Model):\n    id = db.Column(db.Integer, primary_key=True)\n    latitude = db.Column(db.Float, nullable=False)\n    longitude = db.Column(db.Float, nullable=False)",
+        "detail": ".ipynb_checkpoints.app-checkpoint",
+        "documentation": {}
+    },
+    {
+        "label": "db",
+        "kind": 5,
+        "importPath": ".ipynb_checkpoints.app-checkpoint",
+        "description": ".ipynb_checkpoints.app-checkpoint",
+        "peekOfCode": "db = SQLAlchemy(app)\nUPLOAD_FOLDER = 'static/images'\nALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'tif', 'tiff'}\napp.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER\n# Database model\nclass SolarPotentialResult(db.Model):\n    id = db.Column(db.Integer, primary_key=True)\n    latitude = db.Column(db.Float, nullable=False)\n    longitude = db.Column(db.Float, nullable=False)\n    image_path = db.Column(db.String(255), nullable=False)",
+        "detail": ".ipynb_checkpoints.app-checkpoint",
+        "documentation": {}
+    },
+    {
+        "label": "UPLOAD_FOLDER",
+        "kind": 5,
+        "importPath": ".ipynb_checkpoints.app-checkpoint",
+        "description": ".ipynb_checkpoints.app-checkpoint",
+        "peekOfCode": "UPLOAD_FOLDER = 'static/images'\nALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'tif', 'tiff'}\napp.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER\n# Database model\nclass SolarPotentialResult(db.Model):\n    id = db.Column(db.Integer, primary_key=True)\n    latitude = db.Column(db.Float, nullable=False)\n    longitude = db.Column(db.Float, nullable=False)\n    image_path = db.Column(db.String(255), nullable=False)\n    area = db.Column(db.Float, nullable=False)",
+        "detail": ".ipynb_checkpoints.app-checkpoint",
+        "documentation": {}
+    },
+    {
+        "label": "ALLOWED_EXTENSIONS",
+        "kind": 5,
+        "importPath": ".ipynb_checkpoints.app-checkpoint",
+        "description": ".ipynb_checkpoints.app-checkpoint",
+        "peekOfCode": "ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'tif', 'tiff'}\napp.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER\n# Database model\nclass SolarPotentialResult(db.Model):\n    id = db.Column(db.Integer, primary_key=True)\n    latitude = db.Column(db.Float, nullable=False)\n    longitude = db.Column(db.Float, nullable=False)\n    image_path = db.Column(db.String(255), nullable=False)\n    area = db.Column(db.Float, nullable=False)\n    efficiency = db.Column(db.Float, nullable=False)",
+        "detail": ".ipynb_checkpoints.app-checkpoint",
+        "documentation": {}
+    },
+    {
+        "label": "app.config['UPLOAD_FOLDER']",
+        "kind": 5,
+        "importPath": ".ipynb_checkpoints.app-checkpoint",
+        "description": ".ipynb_checkpoints.app-checkpoint",
+        "peekOfCode": "app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER\n# Database model\nclass SolarPotentialResult(db.Model):\n    id = db.Column(db.Integer, primary_key=True)\n    latitude = db.Column(db.Float, nullable=False)\n    longitude = db.Column(db.Float, nullable=False)\n    image_path = db.Column(db.String(255), nullable=False)\n    area = db.Column(db.Float, nullable=False)\n    efficiency = db.Column(db.Float, nullable=False)\n    avg_radiance = db.Column(db.Float, nullable=False)",
+        "detail": ".ipynb_checkpoints.app-checkpoint",
+        "documentation": {}
+    },
+    {
+        "label": "CustomException",
+        "kind": 6,
+        "importPath": "ML.src.exception",
+        "description": "ML.src.exception",
+        "peekOfCode": "class CustomException(Exception):\n    def __init__(self,error_message,error_detail:sys):\n        super().__init__(error_message)\n        self.error_message=error_message_detail(error_message,error_detail=error_detail)\n    def __str__(self):\n        return self.error_message",
+        "detail": "ML.src.exception",
+        "documentation": {}
+    },
+    {
+        "label": "error_message_detail",
+        "kind": 2,
+        "importPath": "ML.src.exception",
+        "description": "ML.src.exception",
+        "peekOfCode": "def error_message_detail(error,error_detail:sys):\n    _,_,exc_tb=error_detail.exc_info()\n    file_name=exc_tb.tb_frame.f_code.co_filename\n    error_message=\"Error occured in python script name [{0}] line number [{1}] error message[{2}]\".format(\n    file_name,exc_tb.tb_lineno,str(error))\n    return error_message\nclass CustomException(Exception):\n    def __init__(self,error_message,error_detail:sys):\n        super().__init__(error_message)\n        self.error_message=error_message_detail(error_message,error_detail=error_detail)",
+        "detail": "ML.src.exception",
+        "documentation": {}
+    },
+    {
+        "label": "get_requirements",
+        "kind": 2,
+        "importPath": "ML.setup",
+        "description": "ML.setup",
+        "peekOfCode": "def get_requirements(file_path:str)->List[str]:\n    '''\n        This Function will return all the required packages\n    '''\n    requirements = []\n    with open(file_path) as file_obj:\n        requirements = file_obj.readlines()\n        requirements = [req.replace(\"\\n\", \"\") for req in requirements]\n        if HYPEN_E_DOT in requirements:\n            requirements.remove(HYPEN_E_DOT)",
+        "detail": "ML.setup",
+        "documentation": {}
+    },
+    {
+        "label": "HYPEN_E_DOT",
+        "kind": 5,
+        "importPath": "ML.setup",
+        "description": "ML.setup",
+        "peekOfCode": "HYPEN_E_DOT = \"-e .\"\ndef get_requirements(file_path:str)->List[str]:\n    '''\n        This Function will return all the required packages\n    '''\n    requirements = []\n    with open(file_path) as file_obj:\n        requirements = file_obj.readlines()\n        requirements = [req.replace(\"\\n\", \"\") for req in requirements]\n        if HYPEN_E_DOT in requirements:",
+        "detail": "ML.setup",
+        "documentation": {}
+    },
+    {
+        "label": "get_image_corners",
+        "kind": 2,
+        "importPath": "model.area_calculator",
+        "description": "model.area_calculator",
+        "peekOfCode": "def get_image_corners(image_path):\n    with rasterio.open(image_path) as src:\n        bounds = src.bounds\n        crs = src.crs\n        corners = [\n            (bounds.left, bounds.top),     \n            (bounds.right, bounds.top),    \n            (bounds.right, bounds.bottom),\n            (bounds.left, bounds.bottom)   \n        ]",
+        "detail": "model.area_calculator",
+        "documentation": {}
+    },
+    {
+        "label": "calculate_polygon_area",
+        "kind": 2,
+        "importPath": "model.area_calculator",
+        "description": "model.area_calculator",
+        "peekOfCode": "def calculate_polygon_area(polygon_coords):\n    polygon = Polygon(polygon_coords)\n    area = polygon.area  \n    # Convert to square meters (approximate)\n    area_sqm = area * (111320 * 111320)\n    return area_sqm\ndef pixel_to_meter_conversion_factor(image_path):\n    with rasterio.open(image_path) as src:\n        width = src.width\n        height = src.height",
+        "detail": "model.area_calculator",
+        "documentation": {}
+    },
+    {
+        "label": "pixel_to_meter_conversion_factor",
+        "kind": 2,
+        "importPath": "model.area_calculator",
+        "description": "model.area_calculator",
+        "peekOfCode": "def pixel_to_meter_conversion_factor(image_path):\n    with rasterio.open(image_path) as src:\n        width = src.width\n        height = src.height\n        image_area_pixels = width * height\n    corners_wgs84 = get_image_corners(image_path)\n    image_area_sqm = calculate_polygon_area(corners_wgs84)\n    conversion_factor = image_area_sqm / image_area_pixels\n    return conversion_factor, width, height\ndef calculate_building_areas_from_masks(mask, conversion_factor):",
+        "detail": "model.area_calculator",
+        "documentation": {}
+    },
+    {
+        "label": "calculate_building_areas_from_masks",
+        "kind": 2,
+        "importPath": "model.area_calculator",
+        "description": "model.area_calculator",
+        "peekOfCode": "def calculate_building_areas_from_masks(mask, conversion_factor):\n    num_labels, labels_im = cv2.connectedComponents(mask)\n    building_areas_pixels = []\n    for label in range(1, num_labels):  # Start from 1 to skip background\n        area_pixels = np.sum(labels_im == label)\n        building_areas_pixels.append(area_pixels)\n    building_areas_sqm = [area_pixels * conversion_factor for area_pixels in building_areas_pixels]\n    return building_areas_sqm\ndef calculate_total_area(image_path, mask):\n    corners_wgs84 = get_image_corners(image_path)",
+        "detail": "model.area_calculator",
+        "documentation": {}
+    },
+    {
+        "label": "calculate_total_area",
+        "kind": 2,
+        "importPath": "model.area_calculator",
+        "description": "model.area_calculator",
+        "peekOfCode": "def calculate_total_area(image_path, mask):\n    corners_wgs84 = get_image_corners(image_path)\n    image_area_sqm = calculate_polygon_area(corners_wgs84)\n    conversion_factor, _, _ = pixel_to_meter_conversion_factor(image_path)\n    building_areas = calculate_building_areas_from_masks(mask, conversion_factor)\n    total_building_area = sum(building_areas)\n    return total_building_area, image_area_sqm\nif __name__ == \"__main__\":\n    # You can add some test code here to verify the functions\n    image_path = \"path/to/your/test/image.tif\"",
+        "detail": "model.area_calculator",
+        "documentation": {}
+    },
+    {
+        "label": "unet_resnet50",
+        "kind": 2,
+        "importPath": "model.solar_potential",
+        "description": "model.solar_potential",
+        "peekOfCode": "def unet_resnet50(input_size=(256, 256, 3)):\n    inputs = Input(input_size)\n    # ResNet50 as encoder\n    resnet = ResNet50(include_top=False, weights='imagenet', input_tensor=inputs)\n    # Decoder\n    x = Conv2D(256, 3, activation='relu', padding='same')(resnet.output)\n    x = UpSampling2D()(x)\n    x = concatenate([x, resnet.get_layer('conv4_block6_out').output])\n    x = Conv2D(128, 3, activation='relu', padding='same')(x)\n    x = UpSampling2D()(x)",
+        "detail": "model.solar_potential",
+        "documentation": {}
+    },
+    {
+        "label": "load_weights_partially",
+        "kind": 2,
+        "importPath": "model.solar_potential",
+        "description": "model.solar_potential",
+        "peekOfCode": "def load_weights_partially(model, weights_path):\n    model.load_weights(weights_path, by_name=True, skip_mismatch=True)\n    print(\"Weights loaded partially\")\n# Load the weights\nweights_path = os.path.join(current_dir,  \"model_weights_resnet.h5\")\nif os.path.exists(weights_path):\n    try:\n        load_weights_partially(model, weights_path)\n    except Exception as e:\n        print(f\"Error loading weights: {str(e)}\")",
+        "detail": "model.solar_potential",
+        "documentation": {}
+    },
+    {
+        "label": "preprocess_image",
+        "kind": 2,
+        "importPath": "model.solar_potential",
+        "description": "model.solar_potential",
+        "peekOfCode": "def preprocess_image(image_path, target_size=(256, 256)):\n    img = Image.open(image_path)\n    img = img.resize(target_size)\n    img_array = np.array(img)\n    if img_array.shape[-1] == 4:\n        img_array = img_array[..., :3]\n    img_array = img_array / 255.0\n    img_array = np.expand_dims(img_array, axis=0)\n    return img_array\ndef post_process_mask(mask):",
+        "detail": "model.solar_potential",
+        "documentation": {}
+    },
+    {
+        "label": "post_process_mask",
+        "kind": 2,
+        "importPath": "model.solar_potential",
+        "description": "model.solar_potential",
+        "peekOfCode": "def post_process_mask(mask):\n    kernel = np.ones((5, 5), np.uint8)\n    mask = cv2.morphologyEx(mask, cv2.MORPH_CLOSE, kernel)\n    mask = cv2.morphologyEx(mask, cv2.MORPH_OPEN, kernel)\n    mask = cv2.GaussianBlur(mask, (5, 5), 0)\n    return mask\ndef calculate_solar_irradiance(latitude):\n    max_irradiance = 6.0\n    min_irradiance = 2.5\n    irradiance = max_irradiance - (abs(latitude) / 90) * (max_irradiance - min_irradiance)",
+        "detail": "model.solar_potential",
+        "documentation": {}
+    },
+    {
+        "label": "calculate_solar_irradiance",
+        "kind": 2,
+        "importPath": "model.solar_potential",
+        "description": "model.solar_potential",
+        "peekOfCode": "def calculate_solar_irradiance(latitude):\n    max_irradiance = 6.0\n    min_irradiance = 2.5\n    irradiance = max_irradiance - (abs(latitude) / 90) * (max_irradiance - min_irradiance)\n    return irradiance\ndef calculate_solar_potential(latitude, longitude, area=None, image_path=None):\n    if image_path:\n        # If image path is provided, use image processing\n        preprocessed_image = preprocess_image(image_path)\n        predictions = model.predict(preprocessed_image)",
+        "detail": "model.solar_potential",
+        "documentation": {}
+    },
+    {
+        "label": "calculate_solar_potential",
+        "kind": 2,
+        "importPath": "model.solar_potential",
+        "description": "model.solar_potential",
+        "peekOfCode": "def calculate_solar_potential(latitude, longitude, area=None, image_path=None):\n    if image_path:\n        # If image path is provided, use image processing\n        preprocessed_image = preprocess_image(image_path)\n        predictions = model.predict(preprocessed_image)\n        binary_mask = (predictions[0, :, :, 0] > 0.45).astype(np.uint8)\n        post_processed_mask = post_process_mask(binary_mask)\n        total_building_area, image_area = calculate_total_area(image_path, post_processed_mask)\n    else:\n        # If no image path, use the provided area",
+        "detail": "model.solar_potential",
+        "documentation": {}
+    },
+    {
+        "label": "current_file_path",
+        "kind": 5,
+        "importPath": "model.solar_potential",
+        "description": "model.solar_potential",
+        "peekOfCode": "current_file_path = os.path.abspath(__file__)\ncurrent_dir = os.path.dirname(current_file_path)\ndef unet_resnet50(input_size=(256, 256, 3)):\n    inputs = Input(input_size)\n    # ResNet50 as encoder\n    resnet = ResNet50(include_top=False, weights='imagenet', input_tensor=inputs)\n    # Decoder\n    x = Conv2D(256, 3, activation='relu', padding='same')(resnet.output)\n    x = UpSampling2D()(x)\n    x = concatenate([x, resnet.get_layer('conv4_block6_out').output])",
+        "detail": "model.solar_potential",
+        "documentation": {}
+    },
+    {
+        "label": "current_dir",
+        "kind": 5,
+        "importPath": "model.solar_potential",
+        "description": "model.solar_potential",
+        "peekOfCode": "current_dir = os.path.dirname(current_file_path)\ndef unet_resnet50(input_size=(256, 256, 3)):\n    inputs = Input(input_size)\n    # ResNet50 as encoder\n    resnet = ResNet50(include_top=False, weights='imagenet', input_tensor=inputs)\n    # Decoder\n    x = Conv2D(256, 3, activation='relu', padding='same')(resnet.output)\n    x = UpSampling2D()(x)\n    x = concatenate([x, resnet.get_layer('conv4_block6_out').output])\n    x = Conv2D(128, 3, activation='relu', padding='same')(x)",
+        "detail": "model.solar_potential",
+        "documentation": {}
+    },
+    {
+        "label": "input_shape",
+        "kind": 5,
+        "importPath": "model.solar_potential",
+        "description": "model.solar_potential",
+        "peekOfCode": "input_shape = (256, 256, 3)\nmodel = unet_resnet50(input_shape)\n# New function to load weights partially\ndef load_weights_partially(model, weights_path):\n    model.load_weights(weights_path, by_name=True, skip_mismatch=True)\n    print(\"Weights loaded partially\")\n# Load the weights\nweights_path = os.path.join(current_dir,  \"model_weights_resnet.h5\")\nif os.path.exists(weights_path):\n    try:",
+        "detail": "model.solar_potential",
+        "documentation": {}
+    },
+    {
+        "label": "model",
+        "kind": 5,
+        "importPath": "model.solar_potential",
+        "description": "model.solar_potential",
+        "peekOfCode": "model = unet_resnet50(input_shape)\n# New function to load weights partially\ndef load_weights_partially(model, weights_path):\n    model.load_weights(weights_path, by_name=True, skip_mismatch=True)\n    print(\"Weights loaded partially\")\n# Load the weights\nweights_path = os.path.join(current_dir,  \"model_weights_resnet.h5\")\nif os.path.exists(weights_path):\n    try:\n        load_weights_partially(model, weights_path)",
+        "detail": "model.solar_potential",
+        "documentation": {}
+    },
+    {
+        "label": "weights_path",
+        "kind": 5,
+        "importPath": "model.solar_potential",
+        "description": "model.solar_potential",
+        "peekOfCode": "weights_path = os.path.join(current_dir,  \"model_weights_resnet.h5\")\nif os.path.exists(weights_path):\n    try:\n        load_weights_partially(model, weights_path)\n    except Exception as e:\n        print(f\"Error loading weights: {str(e)}\")\nelse:\n    raise FileNotFoundError(f\"Weights file not found at {weights_path}\")\ndef preprocess_image(image_path, target_size=(256, 256)):\n    img = Image.open(image_path)",
+        "detail": "model.solar_potential",
+        "documentation": {}
+    },
+    {
+        "label": "SolarPotentialResult",
+        "kind": 6,
+        "importPath": "Server.app",
+        "description": "Server.app",
+        "peekOfCode": "class SolarPotentialResult(db.Model):\n    id = db.Column(db.Integer, primary_key=True)\n    latitude = db.Column(db.Float, nullable=False)\n    longitude = db.Column(db.Float, nullable=False)\n    image_path = db.Column(db.String(255), nullable=False)\n    area = db.Column(db.Float, nullable=False)\n    efficiency = db.Column(db.Float, nullable=False)\n    avg_radiance = db.Column(db.Float, nullable=False)\n    avg_radiance_model = db.Column(db.Float, nullable=False)\n    solar_potential_api = db.Column(db.Float, nullable=False)",
+        "detail": "Server.app",
+        "documentation": {}
+    },
+    {
+        "label": "allowed_file",
+        "kind": 2,
+        "importPath": "Server.app",
+        "description": "Server.app",
+        "peekOfCode": "def allowed_file(filename):\n    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS\ndef fetch_solar_radiance(latitude, longitude, start_date, end_date):\n    url = \"https://power.larc.nasa.gov/api/temporal/daily/point\"\n    params = {\n        'parameters': 'ALLSKY_SFC_SW_DWN',\n        'community': 'RE',\n        'longitude': longitude,\n        'latitude': latitude,\n        'start': start_date,",
+        "detail": "Server.app",
+        "documentation": {}
+    },
+    {
+        "label": "fetch_solar_radiance",
+        "kind": 2,
+        "importPath": "Server.app",
+        "description": "Server.app",
+        "peekOfCode": "def fetch_solar_radiance(latitude, longitude, start_date, end_date):\n    url = \"https://power.larc.nasa.gov/api/temporal/daily/point\"\n    params = {\n        'parameters': 'ALLSKY_SFC_SW_DWN',\n        'community': 'RE',\n        'longitude': longitude,\n        'latitude': latitude,\n        'start': start_date,\n        'end': end_date,\n        'format': 'json'",
+        "detail": "Server.app",
+        "documentation": {}
+    },
+    {
+        "label": "calculate_monthly_average_radiance",
+        "kind": 2,
+        "importPath": "Server.app",
+        "description": "Server.app",
+        "peekOfCode": "def calculate_monthly_average_radiance(data):\n    try:\n        dates = []\n        radiance_values = []\n        for date, value in data['properties']['parameter']['ALLSKY_SFC_SW_DWN'].items():\n            dates.append(datetime.datetime.strptime(date, '%Y%m%d'))\n            radiance_values.append(value)\n        df = pd.DataFrame({'date': dates, 'radiance': radiance_values})\n        df.set_index('date', inplace=True)\n        monthly_avg_radiance = df.resample('ME').mean()",
+        "detail": "Server.app",
+        "documentation": {}
+    },
+    {
+        "label": "calculate_solar_energy_potential",
+        "kind": 2,
+        "importPath": "Server.app",
+        "description": "Server.app",
+        "peekOfCode": "def calculate_solar_energy_potential(monthly_avg_radiance, area, efficiency):\n    monthly_avg_radiance['total_energy'] = monthly_avg_radiance['radiance'] * area * efficiency * 365 / 12  # Energy in kWh/year\n    return monthly_avg_radiance\n@app.route('/')\ndef index():\n    return render_template('index.html')\n@app.route('/api/calculate_solar_data', methods=['POST'])\ndef calculate_solar_data():\n    data = request.json\n    latitude = data.get('latitude')",
+        "detail": "Server.app",
+        "documentation": {}
+    },
+    {
+        "label": "index",
+        "kind": 2,
+        "importPath": "Server.app",
+        "description": "Server.app",
+        "peekOfCode": "def index():\n    return render_template('index.html')\n@app.route('/api/calculate_solar_data', methods=['POST'])\ndef calculate_solar_data():\n    data = request.json\n    latitude = data.get('latitude')\n    longitude = data.get('longitude')\n    coords = data.get('coordsArray')\n    start_date = data.get('startDate', '20230101')\n    end_date = data.get('endDate', '20231231')",
+        "detail": "Server.app",
+        "documentation": {}
+    },
+    {
+        "label": "calculate_solar_data",
+        "kind": 2,
+        "importPath": "Server.app",
+        "description": "Server.app",
+        "peekOfCode": "def calculate_solar_data():\n    data = request.json\n    latitude = data.get('latitude')\n    longitude = data.get('longitude')\n    coords = data.get('coordsArray')\n    start_date = data.get('startDate', '20230101')\n    end_date = data.get('endDate', '20231231')\n    efficiency = data.get('efficiency', 0.18)\n    if None in [latitude, longitude, coords]:\n        return jsonify({'error': 'Missing required fields'}), 400",
+        "detail": "Server.app",
+        "documentation": {}
+    },
+    {
+        "label": "save_image",
+        "kind": 2,
+        "importPath": "Server.app",
+        "description": "Server.app",
+        "peekOfCode": "def save_image():\n    data = request.json\n    logger.info(f\"Received data: {data}\")\n    latitude = data.get('latitude')\n    longitude = data.get('longitude')\n    coords = data.get('coordsArray')\n    static_map_url = data.get('staticMapUrl')\n    avg_radiance = data.get('avgRadiance', 0)\n    model_avg_radiance = data.get('modelAvgRadiance', 0)\n    solar_potential_api = data.get('solarPotentialAPI', 0)",
+        "detail": "Server.app",
+        "documentation": {}
+    },
+    {
+        "label": "serve_image",
+        "kind": 2,
+        "importPath": "Server.app",
+        "description": "Server.app",
+        "peekOfCode": "def serve_image(filename):\n    return send_from_directory('static/images', filename)\n@app.route('/api/results', methods=['GET'])\ndef get_results():\n    results = SolarPotentialResult.query.all()\n    return jsonify([{\n        'id': result.id,\n        'latitude': result.latitude,\n        'longitude': result.longitude,\n        'imagePath': result.image_path,",
+        "detail": "Server.app",
+        "documentation": {}
+    },
+    {
+        "label": "get_results",
+        "kind": 2,
+        "importPath": "Server.app",
+        "description": "Server.app",
+        "peekOfCode": "def get_results():\n    results = SolarPotentialResult.query.all()\n    return jsonify([{\n        'id': result.id,\n        'latitude': result.latitude,\n        'longitude': result.longitude,\n        'imagePath': result.image_path,\n        'area': result.area,\n        'efficiency': result.efficiency,\n        'avgRadiance': result.avg_radiance,",
+        "detail": "Server.app",
+        "documentation": {}
+    },
+    {
+        "label": "logger",
+        "kind": 5,
+        "importPath": "Server.app",
+        "description": "Server.app",
+        "peekOfCode": "logger = logging.getLogger(__name__)\napp = Flask(__name__)\n# Database configuration\napp.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://aman:aman7303@localhost/solar_db'\napp.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False\ndb = SQLAlchemy(app)\nUPLOAD_FOLDER = 'static/images'\nALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'tif', 'tiff'}\napp.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER\n# Database model",
+        "detail": "Server.app",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "Server.app",
+        "description": "Server.app",
+        "peekOfCode": "app = Flask(__name__)\n# Database configuration\napp.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://aman:aman7303@localhost/solar_db'\napp.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False\ndb = SQLAlchemy(app)\nUPLOAD_FOLDER = 'static/images'\nALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'tif', 'tiff'}\napp.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER\n# Database model\nclass SolarPotentialResult(db.Model):",
+        "detail": "Server.app",
+        "documentation": {}
+    },
+    {
+        "label": "app.config['SQLALCHEMY_DATABASE_URI']",
+        "kind": 5,
+        "importPath": "Server.app",
+        "description": "Server.app",
+        "peekOfCode": "app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://aman:aman7303@localhost/solar_db'\napp.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False\ndb = SQLAlchemy(app)\nUPLOAD_FOLDER = 'static/images'\nALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'tif', 'tiff'}\napp.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER\n# Database model\nclass SolarPotentialResult(db.Model):\n    id = db.Column(db.Integer, primary_key=True)\n    latitude = db.Column(db.Float, nullable=False)",
+        "detail": "Server.app",
+        "documentation": {}
+    },
+    {
+        "label": "app.config['SQLALCHEMY_TRACK_MODIFICATIONS']",
+        "kind": 5,
+        "importPath": "Server.app",
+        "description": "Server.app",
+        "peekOfCode": "app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False\ndb = SQLAlchemy(app)\nUPLOAD_FOLDER = 'static/images'\nALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'tif', 'tiff'}\napp.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER\n# Database model\nclass SolarPotentialResult(db.Model):\n    id = db.Column(db.Integer, primary_key=True)\n    latitude = db.Column(db.Float, nullable=False)\n    longitude = db.Column(db.Float, nullable=False)",
+        "detail": "Server.app",
+        "documentation": {}
+    },
+    {
+        "label": "db",
+        "kind": 5,
+        "importPath": "Server.app",
+        "description": "Server.app",
+        "peekOfCode": "db = SQLAlchemy(app)\nUPLOAD_FOLDER = 'static/images'\nALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'tif', 'tiff'}\napp.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER\n# Database model\nclass SolarPotentialResult(db.Model):\n    id = db.Column(db.Integer, primary_key=True)\n    latitude = db.Column(db.Float, nullable=False)\n    longitude = db.Column(db.Float, nullable=False)\n    image_path = db.Column(db.String(255), nullable=False)",
+        "detail": "Server.app",
+        "documentation": {}
+    },
+    {
+        "label": "UPLOAD_FOLDER",
+        "kind": 5,
+        "importPath": "Server.app",
+        "description": "Server.app",
+        "peekOfCode": "UPLOAD_FOLDER = 'static/images'\nALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'tif', 'tiff'}\napp.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER\n# Database model\nclass SolarPotentialResult(db.Model):\n    id = db.Column(db.Integer, primary_key=True)\n    latitude = db.Column(db.Float, nullable=False)\n    longitude = db.Column(db.Float, nullable=False)\n    image_path = db.Column(db.String(255), nullable=False)\n    area = db.Column(db.Float, nullable=False)",
+        "detail": "Server.app",
+        "documentation": {}
+    },
+    {
+        "label": "ALLOWED_EXTENSIONS",
+        "kind": 5,
+        "importPath": "Server.app",
+        "description": "Server.app",
+        "peekOfCode": "ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'tif', 'tiff'}\napp.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER\n# Database model\nclass SolarPotentialResult(db.Model):\n    id = db.Column(db.Integer, primary_key=True)\n    latitude = db.Column(db.Float, nullable=False)\n    longitude = db.Column(db.Float, nullable=False)\n    image_path = db.Column(db.String(255), nullable=False)\n    area = db.Column(db.Float, nullable=False)\n    efficiency = db.Column(db.Float, nullable=False)",
+        "detail": "Server.app",
+        "documentation": {}
+    },
+    {
+        "label": "app.config['UPLOAD_FOLDER']",
+        "kind": 5,
+        "importPath": "Server.app",
+        "description": "Server.app",
+        "peekOfCode": "app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER\n# Database model\nclass SolarPotentialResult(db.Model):\n    id = db.Column(db.Integer, primary_key=True)\n    latitude = db.Column(db.Float, nullable=False)\n    longitude = db.Column(db.Float, nullable=False)\n    image_path = db.Column(db.String(255), nullable=False)\n    area = db.Column(db.Float, nullable=False)\n    efficiency = db.Column(db.Float, nullable=False)\n    avg_radiance = db.Column(db.Float, nullable=False)",
+        "detail": "Server.app",
+        "documentation": {}
+    }
+]
