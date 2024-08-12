@@ -3,3 +3,8 @@
 .ipynb_checkpoints/model_resnet-checkpoint.ipynb
 /ML/data
 *.h5
+*.pyc
+backend/venv/Lib/site-packages/alembic/autogenerate/compare.py
+backend/venv/Include/site/python3.12/greenlet/greenlet.h
+*.txt
+backend/venv
