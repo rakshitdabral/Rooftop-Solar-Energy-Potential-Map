@@ -12,7 +12,7 @@ function Footer() {
         </div>
 
         <div>
-          <h2 className='text-white font-bold text-2xl mb-4'>Useful Links</h2>
+          <h2 className='text-white font-bold text-2xl mb-2'>Useful Links</h2>
           <ul className='text-white leading-10'>
             <li>Our Projects</li>
             <li>FAQ's</li>
@@ -21,7 +21,7 @@ function Footer() {
         </div>
 
         <div>
-          <h2 className='text-white font-bold text-2xl mb-4'>Quick Links</h2>
+          <h2 className='text-white font-bold text-2xl mb-2'>Quick Links</h2>
           <ul className='text-white leading-10'>
             <li>Privacy Policy</li>
             <li>Terms of Service</li>
@@ -31,7 +31,7 @@ function Footer() {
         </div>
 
         <div>
-          <h2 className='text-white font-bold text-2xl mb-4'>Contacts</h2>
+          <h2 className='text-white font-bold text-2xl mb-2'>Contacts</h2>
           <ul className='text-white leading-10'>
             <li>Our Projects</li>
             <li>FAQ's</li>

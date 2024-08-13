@@ -21,12 +21,16 @@ export default function LoginForm({ setIsLoggedIn }) {
   async function submitHandler(event) {
     event.preventDefault();
     try {
-      await signInWithEmailAndPassword(auth, formData.email, formData.password);
+      // Use hardcoded credentials for testing
+      await signInWithEmailAndPassword(auth, "test@example.com", "testpassword123");
       setIsLoggedIn(true);
       toast.success("Logged in successfully");
       navigate("/dashboard");
     } catch (error) {
-      toast.error("Login failed: " + error.message);
+      console.error("Full error object:", error);
+      console.error("Error code:", error.code);
+      console.error("Error message:", error.message);
+      toast.error(`Login failed: ${error.code} - ${error.message}`);
     }
   }
 
