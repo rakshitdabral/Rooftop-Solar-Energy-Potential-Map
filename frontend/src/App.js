@@ -34,7 +34,7 @@ function App() {
         <Route path="/signup" element={<Signup setIsLoggedIn={setIsLoggedIn} />} />
        
       </Routes>
-      <Footer/>
+      {/* <Footer/> */}
       <ToastContainer />
     </>
   );

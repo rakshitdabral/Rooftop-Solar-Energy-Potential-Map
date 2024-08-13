@@ -1,229 +1,215 @@
 import datetime
-import logging
 import os
-import sys
-
-import pandas as pd
-import psycopg2
-import requests
-from flask import Flask, jsonify, render_template, request, send_from_directory
+from flask import Flask, request, jsonify, send_from_directory
 from flask_sqlalchemy import SQLAlchemy
-from shapely.geometry import Polygon
-from shapely.geometry.polygon import orient
-from werkzeug.utils import secure_filename
+from flask_cors import CORS
+from io import BytesIO
+import requests
+from werkzeug.security import generate_password_hash, check_password_hash
+from PIL import Image
 
-from model.solar_potential import calculate_solar_potential
+app = Flask(__name__, static_folder='../frontend/build', static_url_path='/')
 
-sys.path.append(os.path.dirname(os.path.abspath(__file__)))
-
-logging.basicConfig(level=logging.DEBUG)
-logger = logging.getLogger(__name__)
-
-app = Flask(__name__)
-
-# Database configuration
+UPLOAD_FOLDER = 'uploads'
+if not os.path.exists(UPLOAD_FOLDER):
+    os.makedirs(UPLOAD_FOLDER)
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+CORS(app)
+# CORS(app, resources={r"/*": {"origins": "http://localhost:5000"}})
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://aman:aman7303@localhost/solar_db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
-UPLOAD_FOLDER = 'static/images'
-ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'tif', 'tiff'}
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-
-# Database model
-class SolarPotentialResult(db.Model):
+class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    firstname = db.Column(db.String(50), nullable=False)
+    lastname = db.Column(db.String(50), nullable=False)
+    email = db.Column(db.String(120), unique=True, nullable=False)
+    password = db.Column(db.String(255), nullable=False)
+
+class SolarEstimation(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     latitude = db.Column(db.Float, nullable=False)
     longitude = db.Column(db.Float, nullable=False)
-    image_path = db.Column(db.String(255), nullable=False)
-    area = db.Column(db.Float, nullable=False)
+    start_date = db.Column(db.String(8), nullable=False)
+    end_date = db.Column(db.String(8), nullable=False)
     efficiency = db.Column(db.Float, nullable=False)
-    avg_radiance = db.Column(db.Float, nullable=False)
-    avg_radiance_model = db.Column(db.Float, nullable=False)
-    solar_potential_api = db.Column(db.Float, nullable=False)
-    solar_potential_model = db.Column(db.Float, nullable=False)
-    timestamp = db.Column(db.DateTime, default=datetime.datetime.utcnow)
+    annual_energy_potential = db.Column(db.Float, nullable=False)
 
-def allowed_file(filename):
-    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+class Polygon(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    coordinates = db.Column(db.Text, nullable=False)
+    image_path = db.Column(db.String(255))
+    created_at = db.Column(db.DateTime, default=db.func.current_timestamp())
+    image_url= db.Column(db.String(255))
 
-def fetch_solar_radiance(latitude, longitude, start_date, end_date):
-    url = "https://power.larc.nasa.gov/api/temporal/daily/point"
-    params = {
-        'parameters': 'ALLSKY_SFC_SW_DWN',
-        'community': 'RE',
-        'longitude': longitude,
-        'latitude': latitude,
-        'start': start_date,
-        'end': end_date,
-        'format': 'json'
-    }
-    response = requests.get(url, params=params)
-    if response.status_code == 200:
-        return response.json()
-    else:
-        logger.error(f"Error fetching solar radiance: {response.status_code}")
-        return None
+    def __repr__(self):
+        return f'<Polygon {self.id}>'
 
-def calculate_monthly_average_radiance(data):
+@app.route('/api/signup', methods=['POST'])
+def signup():
     try:
-        dates = []
-        radiance_values = []
-        for date, value in data['properties']['parameter']['ALLSKY_SFC_SW_DWN'].items():
-            dates.append(datetime.datetime.strptime(date, '%Y%m%d'))
-            radiance_values.append(value)
-        df = pd.DataFrame({'date': dates, 'radiance': radiance_values})
-        df.set_index('date', inplace=True)
-        monthly_avg_radiance = df.resample('ME').mean()
-        return monthly_avg_radiance
-    except KeyError as e:
-        logger.error(f"Error calculating monthly average radiance: {e}")
-        return None
-
-def calculate_solar_energy_potential(monthly_avg_radiance, area, efficiency):
-    monthly_avg_radiance['total_energy'] = monthly_avg_radiance['radiance'] * area * efficiency * 365 / 12  # Energy in kWh/year
-    return monthly_avg_radiance
-
-@app.route('/')
-def index():
-    return render_template('index.html')
-
-@app.route('/api/calculate_solar_data', methods=['POST'])
-def calculate_solar_data():
-    data = request.json
-    latitude = data.get('latitude')
-    longitude = data.get('longitude')
-    coords = data.get('coordsArray')
-    start_date = data.get('startDate', '20230101')
-    end_date = data.get('endDate', '20231231')
-    efficiency = data.get('efficiency', 0.18)
-
-    if None in [latitude, longitude, coords]:
-        return jsonify({'error': 'Missing required fields'}), 400
-
-    try:
-        polygon = Polygon([(coord['lng'], coord['lat']) for coord in coords])
-        polygon = orient(polygon, sign=1.0)
-        area = polygon.area * (111139 * 111139)  # Approximate conversion to square meters
-
-        solar_radiance_data = fetch_solar_radiance(latitude, longitude, start_date, end_date)
+        data = request.json
+        if not data:
+            return jsonify({"error": "No data provided"}), 400
         
-        if solar_radiance_data:
-            monthly_avg_radiance = calculate_monthly_average_radiance(solar_radiance_data)
-            if monthly_avg_radiance is not None:
-                monthly_avg_radiance = calculate_solar_energy_potential(monthly_avg_radiance, area, efficiency)
-                avg_radiance = monthly_avg_radiance['radiance'].mean()
-                solar_potential_api = monthly_avg_radiance['total_energy'].sum()
-
-                # Call calculate_solar_potential without image_path
-                solar_potential_model = calculate_solar_potential(latitude, longitude, area=area)
-
-                result = {
-                    'area': area,
-                    'avgRadiance': avg_radiance,
-                    'solarPotentialAPI': solar_potential_api,
-                    'solarPotentialModel': solar_potential_model['solar_potential'],
-                    'modelAvgRadiance': solar_potential_model['avg_radiance'],
-                    'totalBuildingArea': solar_potential_model['total_building_area'],
-                    'imageArea': solar_potential_model['image_area']
-                }
-
-                return jsonify(result)
-
-        return jsonify({'error': 'Could not calculate solar data from API'}), 500
-
-    except Exception as e:
-        logger.error(f"Error in calculate_solar_data: {str(e)}")
-        return jsonify({'error': f'An error occurred: {str(e)}'}), 500
-
-
-@app.route('/api/save_image', methods=['POST'])
-def save_image():
-    data = request.json
-    logger.info(f"Received data: {data}")
-
-    latitude = data.get('latitude')
-    longitude = data.get('longitude')
-    coords = data.get('coordsArray')
-    static_map_url = data.get('staticMapUrl')
-    avg_radiance = data.get('avgRadiance', 0)
-    model_avg_radiance = data.get('modelAvgRadiance', 0)
-    solar_potential_api = data.get('solarPotentialAPI', 0)
-    solar_potential_model = data.get('solarPotentialModel', 0)
-    efficiency = data.get('efficiency', 0.18)
-
-    if None in [latitude, longitude, coords, static_map_url]:
-        return jsonify({'error': 'Missing required fields'}), 400
-
-    try:
-        response = requests.get(static_map_url)
-        filename = f'map_{latitude}_{longitude}.png'
-        image_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-        os.makedirs(os.path.dirname(image_path), exist_ok=True)
-        with open(image_path, 'wb') as f:
-            f.write(response.content)
-    except Exception as e:
-        logger.error(f"Error saving image: {str(e)}")
-        return jsonify({'error': 'Failed to save image'}), 500
-
-    try:
-        polygon = Polygon([(coord['lng'], coord['lat']) for coord in coords])
-        polygon = orient(polygon, sign=1.0)
-        area = polygon.area * (111139 * 111139)  # Approximate conversion to square meters
-    except Exception as e:
-        logger.error(f"Error calculating polygon area: {str(e)}")
-        return jsonify({'error': 'Failed to calculate area'}), 500
-
-    try:
-        result = SolarPotentialResult(
-            latitude=latitude,
-            longitude=longitude,
-            image_path=image_path,
-            area=area,
-            efficiency=efficiency,
-            avg_radiance=avg_radiance,
-            avg_radiance_model=model_avg_radiance,
-            solar_potential_api=solar_potential_api,
-            solar_potential_model=solar_potential_model
+        hashed_password = generate_password_hash(data['password'])
+        new_user = User(
+            firstname=data['firstname'],
+            lastname=data['lastname'],
+            email=data['email'],
+            password=hashed_password
         )
-        db.session.add(result)
+        db.session.add(new_user)
         db.session.commit()
+        return jsonify({"message": "User created successfully"}), 201
     except Exception as e:
         db.session.rollback()
-        logger.error(f"Error saving to database: {str(e)}")
-        return jsonify({'error': 'Failed to save data to database'}), 500
+        return jsonify({"error": str(e)}), 500
 
-    return jsonify({
-        'imagePath': f'/static/images/{filename}',
-        'area': area,
-        'avgRadiance': avg_radiance,
-        'modelAvgRadiance': model_avg_radiance,
-        'solarPotentialAPI': solar_potential_api,
-        'solarPotentialModel': solar_potential_model
-    })
+@app.route('/api/login', methods=['POST'])
+def login():
+    try:
+        data = request.json
+        if not data:
+            return jsonify({"error": "No data provided"}), 400
+        
+        user = User.query.filter_by(email=data['email']).first()
+        if user and check_password_hash(user.password, data['password']):
+            return jsonify({"message": "Login successful", "user_id": user.id}), 200
+        return jsonify({"error": "Invalid credentials"}), 401
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
-@app.route('/static/images/<path:filename>')
-def serve_image(filename):
-    return send_from_directory('static/images', filename)
+@app.route('/api/estimate', methods=['POST'])
+def estimate():
+    try:
+        data = request.json
+        if not data:
+            return jsonify({"error": "No data provided"}), 400
+        
+        response = requests.get('https://power.larc.nasa.gov/api/temporal/daily/point', params={
+            'parameters': 'ALLSKY_SFC_SW_DWN',
+            'community': 'RE',
+            'longitude': data['longitude'],
+            'latitude': data['latitude'],
+            'start': data['startDate'],
+            'end': data['endDate'],
+            'format': 'json',
+        })
+        
+        if response.status_code != 200:
+            return jsonify({"error": "Failed to fetch solar data"}), 500
+        
+        solar_data = response.json()['properties']['parameter']['ALLSKY_SFC_SW_DWN']
+        
+        annual_energy_potential = sum(solar_data.values()) * 500 * float(data['efficiency'])
+        
+        new_estimation = SolarEstimation(
+            user_id=data['user_id'],
+            latitude=data['latitude'],
+            longitude=data['longitude'],
+            start_date=data['startDate'],
+            end_date=data['endDate'],
+            efficiency=data['efficiency'],
+            annual_energy_potential=annual_energy_potential
+        )
+        db.session.add(new_estimation)
+        db.session.commit()
+        
+        return jsonify({"solar_data": solar_data, "annual_energy_potential": annual_energy_potential}), 200
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({"error": str(e)}), 500
 
-@app.route('/api/results', methods=['GET'])
-def get_results():
-    results = SolarPotentialResult.query.all()
-    return jsonify([{
-        'id': result.id,
-        'latitude': result.latitude,
-        'longitude': result.longitude,
-        'imagePath': result.image_path,
-        'area': result.area,
-        'efficiency': result.efficiency,
-        'avgRadiance': result.avg_radiance,
-        'avgRadianceModel': result.avg_radiance_model,
-        'solarPotentialAPI': result.solar_potential_api,
-        'solarPotentialModel': result.solar_potential_model,
-        'timestamp': result.timestamp.isoformat()
-    } for result in results])
+# @app.route('/api/save_image', methods=['POST'])
+# def save_image():
+#     try:
+#         data = request.get_json()
+#         image_url = data['imageUrl']
+#         user_id = data['user_id']
+        
+#         response = requests.get(image_url)
+#         image = Image.open(BytesIO(response.content))
+        
+#         image_path = os.path.join(UPLOAD_FOLDER, f'{user_id}_satellite_image.png')
+#         image.save(image_path)
+
+#         # polygon = Polygon(
+#         #     user_id=user_id,
+#         #     coordinates="",  # Assuming no coordinates provided here
+#         #     image_path=image_path
+#         # )
+#         # db.session.add(polygon)
+#         # db.session.commit()
+        
+#         return jsonify({'message': 'Image saved successfully', 'imagePath': image_path})
+#     except Exception as e:
+#         return jsonify({'error': str(e)}), 500
+    
+
+
+
+
+@app.route('/api/save_polygon', methods=['POST'])
+def save_polygon():
+    try:
+        data = request.get_json()
+        print(data)
+        coordinates = data['coordinates']
+        image_url = data['imageUrl']
+        user_id = data['user_id']
+        
+        # Download the image from the URL
+        response = requests.get(image_url)
+        response.raise_for_status()
+        
+        # Open the image using PIL
+        image = Image.open(BytesIO(response.content))
+        
+        # Save the image locally
+        image_path = os.path.join(app.config['UPLOAD_FOLDER'], f'{user_id}_polygon_image.png')
+        image.save(image_path)
+        print(image_path)
+
+        polygon = Polygon(
+            user_id=user_id,
+            coordinates=coordinates,
+            image_path=image_path,
+            image_url=image_url
+        )
+        db.session.add(polygon)
+        db.session.commit()
+        
+        return jsonify({'message': 'Polygon and image saved successfully', 'imagePath': image_path})
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+# Serve React App
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def serve_react_app(path):
+    if path != "" and os.path.exists(os.path.join(app.static_folder, path)):
+        return send_from_directory(app.static_folder, path)
+    else:
+        return send_from_directory(app.static_folder, 'index.html')
 
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
     app.run(debug=True)
+
+
+
+
+
+
+
+
+
+
+
+
+
