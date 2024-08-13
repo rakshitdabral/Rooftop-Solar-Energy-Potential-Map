@@ -43,6 +43,7 @@ class Polygon(db.Model):
     coordinates = db.Column(db.Text, nullable=False)
     image_path = db.Column(db.String(255))
     created_at = db.Column(db.DateTime, default=db.func.current_timestamp())
+    image_url= db.Column(db.String(255))
 
     def __repr__(self):
         return f'<Polygon {self.id}>'
@@ -123,30 +124,30 @@ def estimate():
         db.session.rollback()
         return jsonify({"error": str(e)}), 500
 
-@app.route('/api/save_image', methods=['POST'])
-def save_image():
-    try:
-        data = request.get_json()
-        image_url = data['imageUrl']
-        user_id = data['user_id']
+# @app.route('/api/save_image', methods=['POST'])
+# def save_image():
+#     try:
+#         data = request.get_json()
+#         image_url = data['imageUrl']
+#         user_id = data['user_id']
         
-        response = requests.get(image_url)
-        image = Image.open(BytesIO(response.content))
+#         response = requests.get(image_url)
+#         image = Image.open(BytesIO(response.content))
         
-        image_path = os.path.join(UPLOAD_FOLDER, f'{user_id}_satellite_image.png')
-        image.save(image_path)
+#         image_path = os.path.join(UPLOAD_FOLDER, f'{user_id}_satellite_image.png')
+#         image.save(image_path)
 
-        polygon = Polygon(
-            user_id=user_id,
-            coordinates="",  # Assuming no coordinates provided here
-            image_path=image_path
-        )
-        db.session.add(polygon)
-        db.session.commit()
+#         # polygon = Polygon(
+#         #     user_id=user_id,
+#         #     coordinates="",  # Assuming no coordinates provided here
+#         #     image_path=image_path
+#         # )
+#         # db.session.add(polygon)
+#         # db.session.commit()
         
-        return jsonify({'message': 'Image saved successfully', 'imagePath': image_path})
-    except Exception as e:
-        return jsonify({'error': str(e)}), 500
+#         return jsonify({'message': 'Image saved successfully', 'imagePath': image_path})
+#     except Exception as e:
+#         return jsonify({'error': str(e)}), 500
     
 
 
@@ -171,11 +172,13 @@ def save_polygon():
         # Save the image locally
         image_path = os.path.join(app.config['UPLOAD_FOLDER'], f'{user_id}_polygon_image.png')
         image.save(image_path)
+        print(image_path)
 
         polygon = Polygon(
             user_id=user_id,
             coordinates=coordinates,
-            image_path=image_path
+            image_path=image_path,
+            image_url=image_url
         )
         db.session.add(polygon)
         db.session.commit()
