@@ -6,6 +6,8 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import { auth } from '../firebase';
 
+
+
 export default function LoginForm({ setIsLoggedIn }) {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({ email: "", password: "" });
@@ -22,7 +24,7 @@ export default function LoginForm({ setIsLoggedIn }) {
     event.preventDefault();
     try {
       // Use hardcoded credentials for testing
-      await signInWithEmailAndPassword(auth, "test@example.com", "testpassword123");
+      await signInWithEmailAndPassword(auth, formData.email, formData.password);
       setIsLoggedIn(true);
       toast.success("Logged in successfully");
       navigate("/dashboard");

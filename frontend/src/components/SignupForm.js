@@ -6,6 +6,7 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { auth, GoogleAuthProvider } from '../firebase';
 import { createUserWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
 
+
 const SignupForm = ({ setIsLoggedIn }) => {
   const navigate = useNavigate();
   const [userdata, setUserData] = useState({

@@ -1,5 +1,5 @@
 import datetime
-import os
+import os,sys
 from flask import Flask, request, jsonify, send_from_directory
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
@@ -7,6 +7,11 @@ from io import BytesIO
 import requests
 from werkzeug.security import generate_password_hash, check_password_hash
 from PIL import Image
+# from .predict_pipeline import run_prediction
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+from ML.src.pipelines.predict_pipeline import run_prediction
+print("Current Working Directory:", os.getcwd())
+print("Files in the directory:", os.listdir())
 
 app = Flask(__name__, static_folder='../frontend/build', static_url_path='/')
 
@@ -186,6 +191,15 @@ def save_polygon():
         return jsonify({'message': 'Polygon and image saved successfully', 'imagePath': image_path})
     except Exception as e:
         return jsonify({'error': str(e)}), 500
+    
+
+@app.route('/api/run_prediction', methods=['POST'])
+def api_run_prediction():
+    try:
+        run_prediction(db, Polygon)
+        return jsonify({"message": "Prediction completed successfully"}), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
 # Serve React App
 @app.route('/', defaults={'path': ''})
