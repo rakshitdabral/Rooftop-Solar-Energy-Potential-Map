@@ -1,9 +1,8 @@
 import datetime
 import os
-from flask import Flask, request, jsonify, send_from_directory, url_for, session
+from flask import Flask, request, jsonify, send_from_directory
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
-from oauthlib.oauth2 import WebApplicationClient
 from io import BytesIO
 import requests
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -16,7 +15,7 @@ if not os.path.exists(UPLOAD_FOLDER):
     os.makedirs(UPLOAD_FOLDER)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 CORS(app)
-# CORS(app, resources={r"/api/*": {"origins": "http://127.0.0.1:3000"}})
+# CORS(app, resources={r"/*": {"origins": "http://localhost:5000"}})
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://aman:aman7303@localhost/solar_db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
@@ -136,15 +135,28 @@ def save_image():
         
         image_path = os.path.join(UPLOAD_FOLDER, f'{user_id}_satellite_image.png')
         image.save(image_path)
+
+        polygon = Polygon(
+            user_id=user_id,
+            coordinates="",  # Assuming no coordinates provided here
+            image_path=image_path
+        )
+        db.session.add(polygon)
+        db.session.commit()
         
         return jsonify({'message': 'Image saved successfully', 'imagePath': image_path})
     except Exception as e:
         return jsonify({'error': str(e)}), 500
+    
+
+
+
 
 @app.route('/api/save_polygon', methods=['POST'])
 def save_polygon():
     try:
         data = request.get_json()
+        print(data)
         coordinates = data['coordinates']
         image_url = data['imageUrl']
         user_id = data['user_id']
@@ -159,9 +171,16 @@ def save_polygon():
         # Save the image locally
         image_path = os.path.join(app.config['UPLOAD_FOLDER'], f'{user_id}_polygon_image.png')
         image.save(image_path)
+
+        polygon = Polygon(
+            user_id=user_id,
+            coordinates=coordinates,
+            image_path=image_path
+        )
+        db.session.add(polygon)
+        db.session.commit()
         
-        
-        return jsonify({'message': 'Polygon image saved successfully', 'imagePath': image_path})
+        return jsonify({'message': 'Polygon and image saved successfully', 'imagePath': image_path})
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
@@ -183,6 +202,11 @@ if __name__ == '__main__':
 
 
 
-    
+
+
+
+
+
+
 
 
