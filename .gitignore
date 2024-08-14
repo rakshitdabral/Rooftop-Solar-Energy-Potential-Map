@@ -8,3 +8,7 @@ backend/venv/Lib/site-packages/alembic/autogenerate/compare.py
 backend/venv/Include/site/python3.12/greenlet/greenlet.h
 *.txt
 backend/venv
+.vscode/PythonImportHelper-v2-Completion.json
+ML/notebooks/.ipynb_checkpoints/advanced_prediction-checkpoint.ipynb
+/ML/notebooks/.ipynb_checkpoints
+/ML/notebooks/.ipynb_checkpoints
