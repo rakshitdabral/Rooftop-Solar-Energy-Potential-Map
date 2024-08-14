@@ -7,6 +7,7 @@ from io import BytesIO
 import requests
 from werkzeug.security import generate_password_hash, check_password_hash
 from PIL import Image
+
 # from .predict_pipeline import run_prediction
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from ML.src.pipelines.predict_pipeline import run_prediction
@@ -179,6 +180,8 @@ def save_polygon():
         image.save(image_path)
         print(image_path)
 
+
+
         polygon = Polygon(
             user_id=user_id,
             coordinates=coordinates,
@@ -214,16 +217,3 @@ if __name__ == '__main__':
     with app.app_context():
         db.create_all()
     app.run(debug=True)
-
-
-
-
-
-
-
-
-
-
-
-
-
