@@ -12,3 +12,6 @@ backend/venv
 ML/notebooks/.ipynb_checkpoints/advanced_prediction-checkpoint.ipynb
 /ML/notebooks/.ipynb_checkpoints
 /ML/notebooks/.ipynb_checkpoints
+ML/notebooks/13.png
+*.png
+*.tif
