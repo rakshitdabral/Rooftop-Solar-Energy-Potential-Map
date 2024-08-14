@@ -95,19 +95,6 @@ const Home = () => {
     }
   };
 
-  // const savePolygon = async () => {
-  //   try {
-  //     await axios.post('http://localhost:5000/api/save_polygon', {
-  //       coordinates: coords,
-  //       user_id: 1, // Replace with actual user ID after implementing authentication
-  //     });
-  //     alert('Polygon saved successfully');
-  //   } catch (error) {
-  //     console.error('Error saving polygon:', error);
-  //     alert('Error saving polygon');
-  //   }
-  // };
-
   const savePolygon = async () => {
     try {
       const coordsArray = parseCoords(coords);

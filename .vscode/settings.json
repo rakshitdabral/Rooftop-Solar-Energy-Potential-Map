@@ -1,0 +1,6 @@
+{
+    "python.analysis.extraPaths": [
+        "./backend",
+        "./ML/src/pipelines"
+    ]
+}
